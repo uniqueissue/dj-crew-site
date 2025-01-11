@@ -1,0 +1,35 @@
+<canvas id="musicMatrix" width="400" height="400"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('musicMatrix').getContext('2d');
+  const data = {
+    datasets: [{
+      label: 'DJs',
+      data: [
+        { x: 30, y: 70, label: 'DJ A' },
+        { x: 60, y: 20, label: 'DJ B' },
+        { x: 90, y: 50, label: 'DJ C' }
+      ],
+      backgroundColor: 'rgba(54, 162, 235, 0.6)'
+    }]
+  };
+
+  new Chart(ctx, {
+    type: 'bubble',
+    data: data,
+    options: {
+      responsive: true,
+      scales: {
+        x: { title: { display: true, text: 'Energy' } },
+        y: { title: { display: true, text: 'Mood' } }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: (context) => `${context.raw.label}`
+          }
+        }
+      }
+    }
+  });
+</script>
